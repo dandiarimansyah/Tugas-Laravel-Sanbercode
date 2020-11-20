@@ -14,9 +14,9 @@ class AddFkToQuestions extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table) {
-            $table->unsignedBigInteger('profile_id');
+            $table->unsignedBigInteger('profile_id')->nullable();
             $table->foreign('profile_id')->references('id')->on('profiles');
-            $table->unsignedBigInteger('jawaban_id');
+            $table->unsignedBigInteger('jawaban_id')->nullable();
             $table->foreign('jawaban_id')->references('id')->on('answers');
         });
     }
