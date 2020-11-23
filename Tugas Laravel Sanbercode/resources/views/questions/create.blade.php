@@ -7,7 +7,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form role="form" action="/question" method="POST">
+    <form role="form" action="/pertanyaan" method="POST">
         @csrf
         <div class="card-body">
             <div class="form-group">

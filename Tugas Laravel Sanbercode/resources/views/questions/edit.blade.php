@@ -7,7 +7,7 @@
     </div>
     <!-- /.card-header -->
     <!-- form start -->
-    <form role="form" action="/question/{{$questions->id}}" method="POST">
+    <form role="form" action="/pertanyaan/{{$questions->id}}" method="POST">
         @csrf
         @method('PUT')
         <div class="card-body">

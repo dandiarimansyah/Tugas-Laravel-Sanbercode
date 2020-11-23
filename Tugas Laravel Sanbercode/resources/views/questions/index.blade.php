@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        <a href="/question/create" class="btn btn-info mb-3">Tambah Pertanyaan</a>
+        <a href="/pertanyaan/create" class="btn btn-info mb-3">Tambah Pertanyaan</a>
 
       <table class="table table-bordered">
         <thead>                  
@@ -32,9 +32,9 @@
                     <td>{{ $q -> judul}}</td>
                     <td>{{ $q -> isi}}</td>
                     <td style="display: flex">
-                        <a href="/question/{{$q->id}}" class="btn btn-success btn-sm">Show</a>
-                        <a href="/question/{{$q->id}}/edit" class="btn btn-info btn-sm">Edit</a>
-                        <form action="/question/{{$q->id}}" method="POST">
+                        <a href="/pertanyaan/{{$q->id}}" class="btn btn-success btn-sm">Show</a>
+                        <a href="/pertanyaan/{{$q->id}}/edit" class="btn btn-info btn-sm">Edit</a>
+                        <form action="/pertanyaan/{{$q->id}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="delete" class="btn btn-danger btn-sm">

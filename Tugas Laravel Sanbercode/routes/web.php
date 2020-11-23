@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PertanyaanController;
 
 Route::get('/home', 'HomeController@index');
 
@@ -21,12 +22,14 @@ Route::get('/data-tables', function () {
     return view('adminLTE.items.data-tables');
 });
 
-// Tugas15
+// Tugas 1 Pekan 4
 
-Route::get('/question', 'PertanyaanController@index');
-Route::get('/question/create', 'PertanyaanController@create');
-Route::post('/question', 'PertanyaanController@store');
-Route::get('/question/{id}', 'PertanyaanController@show');
-Route::get('/question/{id}/edit', 'PertanyaanController@edit');
-Route::put('/question/{id}', 'PertanyaanController@update');
-Route::delete('/question/{id}', 'PertanyaanController@destroy');
+// Route::get('/pertanyaan', 'PertanyaanController@index')->name('pertanyaan.index');
+// Route::get('/pertanyaan/create', 'PertanyaanController@create');
+// Route::post('/pertanyaan', 'PertanyaanController@store');
+// Route::get('/pertanyaan/{id}', 'PertanyaanController@show');
+// Route::get('/pertanyaan/{id}/edit', 'PertanyaanController@edit');
+// Route::put('/pertanyaan/{id}', 'PertanyaanController@update');
+// Route::delete('/pertanyaan/{id}', 'PertanyaanController@destroy');
+
+Route::resource('pertanyaan', 'PertanyaanController');

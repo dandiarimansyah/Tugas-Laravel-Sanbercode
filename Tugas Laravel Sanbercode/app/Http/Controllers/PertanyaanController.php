@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Question;
 
 class PertanyaanController extends Controller
 {
     public function index()
     {
-        $questions = DB::table('questions')->get();
+        $questions = Question::all();
 
-        return view('questions.list_questions', compact('questions'));
+        return view('questions.index', compact('questions'));
     }
 
     public function create()
@@ -26,45 +27,43 @@ class PertanyaanController extends Controller
             'isi' => 'required'
         ]);
 
-        $query = DB::table('questions')->insert([
-            "judul" => $request["judul"],
-            "isi" => $request["isi"]
+        $question = Question::create([
+            "judul" => $request['judul'],
+            "isi" => $request['isi']
         ]);
 
-        return redirect('question')->with('success', 'Pertanyaan Berhasil Ditambahkan!');
+        return redirect('pertanyaan')->with('success', 'Pertanyaan Berhasil Ditambahkan!');
     }
 
     public function show($id)
     {
-        $questions = DB::table('questions')->where('id', $id)->first();
+        $questions = Question::find($id);
+
         return view('questions.show', compact('questions'));
     }
 
     public function edit($id)
     {
-        $questions = DB::table('questions')->where('id', $id)->first();
+        $questions = Question::find($id);
+
         return view('questions.edit', compact('questions'));
     }
 
     public function update($id, Request $request)
     {
-        $request->validate([
-            'judul' => 'required|unique:questions',
-            'isi' => 'required'
+
+        $question = Question::where('id', $id)->update([
+            "judul" => $request['judul'],
+            "isi" => $request['isi']
         ]);
 
-        $questions = DB::table('questions')
-            ->where('id', $id)
-            ->update([
-                'judul' => $request['judul'],
-                'isi' => $request['isi']
-            ]);
-        return redirect('/question')->with('success', 'Pertanyaan Berhasil Diedit!');
+        return redirect('/pertanyaan')->with('success', 'Pertanyaan Berhasil Diedit!');
     }
 
     public function destroy($id)
     {
-        $questions = DB::table('questions')->where('id', $id)->delete();
-        return redirect('/question')->with('success', 'Pertanyaan Berhasil Dihapus!');
+        Question::destroy($id);
+
+        return redirect('/pertanyaan')->with('success', 'Pertanyaan Berhasil Dihapus!');
     }
 }
